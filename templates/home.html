@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Time</title>
+    <script>
+        function fetchRandom(category) {
+            fetch(`/random/${category}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById(`${category}-result`).innerText = data.choice;
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</head>
+<body>
+    <h1>Movie Time</h1>
+
+    <div>
+        <h2>Genre</h2>
+        <button onclick="fetchRandom('genre')">Choose</button>
+        <p id="genre-result"></p>
+    </div>
+
+    <div>
+        <h2>Year</h2>
+        <button onclick="fetchRandom('year')">Choose</button>
+        <p id="year-result"></p>
+    </div>
+
+    <div>
+        <h2>Language</h2>
+        <button onclick="fetchRandom('language')">Choose</button>
+        <p id="language-result"></p>
+    </div>
+
+</body>
+</html>
